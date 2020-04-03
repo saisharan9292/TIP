@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+    parameters {
+        choice(name: 'Application', choices: ['app1', 'app2', 'app3','app4','app5'], description: 'Pick something')
+
+    }
+    environment {
+        Application = "${params.Application}"
+    }
+    stages {
+        stage('Preparation') { 
+            steps {
+                git ''
+                
+            }
+        }
+        stage('Groovy'){
+            steps {
+                script{
+                    def Application = env.Application
+                    echo Application
+                    def path = pwd()
+                    def runner = load pwd() + '/ab.groovy'
+                    runner.func(Application,path)
+                }
+                
+                
+            }
+        }
+        
+        
+    }
+}
