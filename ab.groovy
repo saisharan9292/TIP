@@ -1,5 +1,5 @@
 
-application_name =env.Application
+application_name = env.Application
 path = env.path
 println application_name
 def inputFile = new File(path+"\\"+"app.properties")
