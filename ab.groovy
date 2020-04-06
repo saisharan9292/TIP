@@ -1,5 +1,6 @@
-def func (Application,path) {
-application_name = Application
+
+application_name =env.Application
+path = env.path
 println application_name
 def inputFile = new File(path+"\\"+"app.properties")
 def lines = inputFile.readLines()
@@ -33,5 +34,3 @@ String[] value_split = lines[4].split("\\|");
 println "GITHUBURL=="+value_split[1]
 println "Package=="+value_split[2]
 }
-}
-return this
